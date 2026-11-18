@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Christmas Is Coming, My Love — A Book of Poems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--night:#1a0b17;--plum:#2e1226;--wine:#5a1a33;--gold:#f0c874;--cream:#fbefdc;--ink:#3b1a26;--rose:#8a2340;--mist:#d9bfc0;
+--serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--script:"Pinyon Script","Snell Roundhand",cursive,Georgia,serif;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .18 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");--leather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .0 0 0 0 0 .0 0 0 0 0 .0 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:var(--serif);color:var(--cream);font-size:1.25rem;line-height:1.7;overflow-x:hidden;
+background:radial-gradient(ellipse at 50% 35%,var(--wine) 0%,var(--plum) 55%,var(--night) 100%) fixed}
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.lights{position:fixed;top:0;left:0;right:0;height:46px;display:flex;justify-content:space-around;overflow:hidden;z-index:3;pointer-events:none}
+.lights span{width:12px;height:18px;border-radius:50% 50% 55% 55%;margin-top:14px;position:relative;background:var(--c);box-shadow:0 0 14px 4px var(--c);animation:glow 3.2s ease-in-out infinite}
+.lights span::before{content:"";position:absolute;left:5px;top:-14px;width:1px;height:14px;background:var(--gold);opacity:.6}
+.lights span:nth-child(3n){--c:#f0c874;animation-delay:.4s}.lights span:nth-child(3n+1){--c:#e0536b;animation-delay:1.2s}.lights span:nth-child(3n+2){--c:#fbefdc;animation-delay:2.1s}
+@keyframes glow{0%,100%{opacity:1}50%{opacity:.45}}
+
+.stage{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+padding:calc(4.2rem + env(safe-area-inset-top,0px)) 1rem calc(1.2rem + env(safe-area-inset-bottom,0px))}
+.book{position:relative;width:min(84vw,28.5rem);height:min(68svh,40rem);perspective:none}
+.book.turning{perspective:2600px}
+
+/* hardcover, spine, page block, ribbon */
+.board{position:absolute;inset:-9px -16px -17px -14px;border-radius:6px 16px 16px 6px;z-index:-3;
+background:var(--leather),linear-gradient(145deg,#74223f,#3a0f22 75%);box-shadow:0 28px 36px rgba(0,0,0,.55),inset 0 0 0 1px rgba(240,200,116,.3),inset 0 0 0 5px rgba(0,0,0,.18)}
+.spine{position:absolute;left:-18px;top:-9px;bottom:-17px;width:24px;border-radius:7px 0 0 7px;z-index:-2;
+background:linear-gradient(90deg,#240915,#64203b 40%,#3a1022);box-shadow:inset -3px 0 5px rgba(0,0,0,.55)}
+.spine::before{content:"";position:absolute;inset:0;
+background:linear-gradient(var(--gold),var(--gold)) 0 12%/100% 2px no-repeat,linear-gradient(var(--gold),var(--gold)) 0 16%/100% 1px no-repeat,
+linear-gradient(var(--gold),var(--gold)) 0 84%/100% 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 0 88%/100% 2px no-repeat;opacity:.75}
+.block{position:absolute;inset:4px -9px -9px 3px;z-index:-1;border-radius:2px 8px 8px 2px;background:#f3e4cd}
+.block::before{content:"";position:absolute;top:0;right:0;bottom:0;width:9px;border-radius:0 8px 8px 0;background:repeating-linear-gradient(90deg,#f8ecd6 0 2px,#d9c5a5 2px 3px)}
+.block::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9px;border-radius:0 0 8px 2px;background:repeating-linear-gradient(180deg,#f8ecd6 0 2px,#d9c5a5 2px 3px)}
+.ribbon{position:absolute;right:2.6rem;bottom:-66px;width:15px;height:90px;z-index:-1;background:linear-gradient(90deg,#86122c,#cf3f5b 50%,#86122c);clip-path:polygon(0 0,100% 0,100% 100%,50% 88%,0 100%)}
+
+/* pages */
+.page{position:absolute;inset:0;transform-origin:left center}
+.page.turn-f,.page.turn-b{transform-style:preserve-3d;will-change:transform,opacity;visibility:visible}
+.page.far,.page.flipped{visibility:hidden}
+.page.turn-f,.page.turn-b{visibility:visible}
+.page:not(.turn-f):not(.turn-b) .bk{display:none}
+.page.flipped{transform:rotateY(-180deg);opacity:0;pointer-events:none}
+.face{position:absolute;inset:0;border-radius:3px 12px 12px 3px;overflow:hidden}
+.turn-f .face,.turn-b .face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.bk{transform:rotateY(180deg)}
+.sh{position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(40,10,20,.55),rgba(40,10,20,.12) 70%,rgba(40,10,20,0))}
+.turn-f{animation:turn 1.25s cubic-bezier(.42,.05,.28,1) var(--d,0s) both}
+.turn-b{animation:turn 1.25s cubic-bezier(.42,.05,.28,1) var(--d,0s) reverse both}
+.turn-f .fr .sh{animation:shf 1.25s ease-in var(--d,0s) both}.turn-b .fr .sh{animation:shf 1.25s ease-in var(--d,0s) reverse both}
+.turn-f .bk .sh{animation:shb 1.25s ease-out var(--d,0s) both}.turn-b .bk .sh{animation:shb 1.25s ease-out var(--d,0s) reverse both}
+@keyframes turn{0%{transform:rotateY(0) skewY(0);opacity:1}22%{transform:rotateY(-30deg) skewY(-2deg)}55%{transform:rotateY(-105deg) skewY(1.6deg)}78%{opacity:1}100%{transform:rotateY(-180deg) skewY(0);opacity:0}}
+@keyframes shf{0%{opacity:0}60%{opacity:.9}100%{opacity:1}}
+@keyframes shb{0%{opacity:1}100%{opacity:0}}
+
+.paper .fr,.paper .bk{background:linear-gradient(90deg,rgba(60,20,30,.34) 0,rgba(60,20,30,.1) 5%,rgba(60,20,30,0) 11%),var(--noise),linear-gradient(#fbefdc,#f4e3c8);color:var(--ink)}
+.paper .fr::before{content:"";position:absolute;inset:12px 12px 12px 20px;border:1px solid rgba(138,35,64,.32);pointer-events:none;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='' fill='none' stroke='%238a2340' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%238a2340' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%2834%2C0%29 scale%28-1%2C1%29' fill='none' stroke='%238a2340' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%238a2340' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%280%2C34%29 scale%281%2C-1%29' fill='none' stroke='%238a2340' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%238a2340' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%2834%2C34%29 scale%28-1%2C-1%29' fill='none' stroke='%238a2340' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%238a2340' stroke='none'/%3E%3C/g%3E%3C/svg%3E");background-position:0 0,100% 0,0 100%,100% 100%;background-repeat:no-repeat;background-size:34px}
+.inner{position:relative;height:100%;overflow-y:auto;touch-action:pan-y;scrollbar-width:thin;scrollbar-color:rgba(138,35,64,.4) transparent;overscroll-behavior:contain;padding:2.6rem 2rem 3.6rem 2.6rem;text-align:center;-webkit-overflow-scrolling:touch}
+.num{position:absolute;bottom:1.15rem;left:0;right:0;text-align:center;font-style:italic;color:#9a7a7e;font-size:1rem;pointer-events:none}
+.holly{display:block;margin:0 auto .9rem;width:46px;height:auto}
+h2{font-family:var(--script);font-weight:400;font-size:clamp(2.2rem,8.5vw,3rem);line-height:1.1;margin:0 0 .3rem;color:var(--rose)}
+.when{font-style:italic;color:#7a5b60;font-size:1.05rem;margin:0 0 1.6rem}
+.when::after{content:"\2766";display:block;margin-top:.35rem;color:var(--rose);font-size:1.25rem;font-style:normal}
+.stanza{margin:0 0 1.5rem}
+.stanza p{margin:0;font-style:italic;font-size:1.22rem}
+.stanza:first-of-type p:first-child::first-letter{font-family:var(--script);font-size:2.4em;line-height:.8;color:var(--rose);font-style:normal}
+.sign{font-family:var(--script);font-size:2rem;color:var(--rose);margin:.5rem 0 0}
+.end .inner,.cover .inner{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.end .inner>:first-child,.cover .inner>:first-child{margin-top:auto}
+.end .inner>:last-child,.cover .inner>:last-child{margin-bottom:auto}
+.end .big{font-family:var(--script);font-size:clamp(2.2rem,9vw,3.2rem);color:var(--rose);margin:0;line-height:1.15}
+.end p.s{font-style:italic;margin:.7rem 0 0}
+.theend{cursor:pointer}
+.theend .fin{font-family:var(--script);font-size:clamp(3.4rem,15vw,5rem);color:var(--rose);margin:.4rem 0 0;line-height:1.1}
+.theend .orn{color:var(--gold);font-size:1.3rem;margin:0;letter-spacing:.2em;text-shadow:0 1px 0 rgba(90,26,51,.4)}
+
+/* covers */
+.cover .fr{color:var(--cream);background:linear-gradient(90deg,rgba(0,0,0,.5) 0,rgba(0,0,0,0) 3%,rgba(255,255,255,.07) 4%,rgba(0,0,0,.35) 6%,rgba(0,0,0,0) 10%),var(--leather),linear-gradient(145deg,#7a2442,#3a0f22 72%);box-shadow:inset 0 0 0 1px rgba(240,200,116,.25)}
+.cover .fr::before{content:"";position:absolute;inset:16px 16px 16px 24px;border:1px solid rgba(240,200,116,.75);outline:1px solid rgba(240,200,116,.3);outline-offset:5px;pointer-events:none;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='' fill='none' stroke='%23f0c874' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%23f0c874' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%2834%2C0%29 scale%28-1%2C1%29' fill='none' stroke='%23f0c874' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%23f0c874' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%280%2C34%29 scale%281%2C-1%29' fill='none' stroke='%23f0c874' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%23f0c874' stroke='none'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg transform='translate%2834%2C34%29 scale%28-1%2C-1%29' fill='none' stroke='%23f0c874' stroke-width='1.2'%3E%3Cpath d='M3 30V12Q3 3 12 3H30'/%3E%3Cpath d='M8 22V15Q8 8 15 8H22'/%3E%3Ccircle cx='13' cy='13' r='1.6' fill='%23f0c874' stroke='none'/%3E%3C/g%3E%3C/svg%3E");background-position:0 0,100% 0,0 100%,100% 100%;background-repeat:no-repeat;background-size:34px}
+.cover .bk{background:radial-gradient(circle,rgba(240,200,116,.3) 1px,transparent 2px) 0 0/18px 18px,#5a1a33}
+.cover .inner{padding:2.6rem 2.2rem 2.6rem 2.8rem}
+.crest{color:var(--gold);letter-spacing:.35em;font-size:1.2rem;margin:0 0 1rem;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.gilt{background:linear-gradient(180deg,#fff2c9,#f0c874 50%,#b98a3a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+.cover h1{font-family:var(--script);font-weight:400;font-size:clamp(2.8rem,12vw,4.1rem);line-height:1.05;margin:0}
+.cover .sub{font-style:italic;color:var(--mist);margin:.9rem 0 1.4rem;font-size:1.15rem;max-width:26ch}
+.count{display:flex;gap:.4rem 1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.count b{display:block;font-size:clamp(1.6rem,7vw,2.2rem);font-weight:400;line-height:1}
+.count small{font-size:.95rem;font-style:italic;color:var(--mist)}
+.open{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:var(--night);background:linear-gradient(#f7d98e,#e2b255);border:0;border-radius:999px;padding:.6rem 1.6rem;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.open:hover{filter:brightness(1.07)}
+.backcover .bigb{font-family:var(--script);font-size:clamp(2.6rem,11vw,3.8rem);line-height:1.1;margin:0}
+
+.controls{display:flex;align-items:center;gap:1.2rem;color:var(--mist);font-style:italic}
+.nav{width:3rem;height:3rem;border-radius:50%;border:1px solid rgba(240,200,116,.6);background:rgba(26,11,23,.55);color:var(--gold);font-size:1.7rem;line-height:1;cursor:pointer;font-family:var(--serif)}
+.nav:disabled{opacity:.3;cursor:default}.nav:hover:not(:disabled){background:rgba(240,200,116,.15)}
+.status{min-width:7.5rem;text-align:center}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (max-width:480px){.inner{padding:2.2rem 1.4rem 3.4rem 1.9rem}.stanza p{font-size:1.15rem}.stage{gap:2rem}}
+@media (prefers-reduced-motion:reduce){.turn-f,.turn-b,.turn-f .sh,.turn-b .sh{animation:none!important}.lights span{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="lights" aria-hidden="true"></div>
+<div class="stage">
+  <div class="book" id="book">
+    <div class="board"></div><div class="spine"></div><div class="block"></div><div class="ribbon"></div>
+    <section class="page cover" aria-label="Cover"><div class="face fr"><div class="inner">
+      <p class="crest" aria-hidden="true">&#10052; &#10084; &#10052;</p><h1 class="gilt">Christmas is coming, my love</h1>
+      <p class="sub">For you, who made every month before it feel like Christmas.</p>
+      <div class="count" role="timer" aria-label="Time until Christmas">
+        <div><b id="d">–</b><small>days</small></div><div><b id="h">–</b><small>hours</small></div><div><b id="m">–</b><small>minutes</small></div><div><b id="s">–</b><small>seconds</small></div>
+      </div>
+      <button class="open" id="open">Open the book</button>
+    </div><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper" aria-label="November, You"><div class="face fr"><div class="inner"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M23 18c-4-8-12-10-20-6 3 8 11 11 20 6zM23 18c4-8 12-10 20-6-3 8-11 11-20 6z" fill="#2f6b4a"/><circle cx="23" cy="19" r="4" fill="#b8324a"/><circle cx="18" cy="22" r="3" fill="#d24a60"/><circle cx="28" cy="22" r="3" fill="#d24a60"/></svg><h2>November, You</h2><p class="when">the month she carried us</p><div class="stanza"><p>November came in grey and early dark,</p><p>and there you were, already up,</p><p>the coffee made, the lamp turned on,</p><p>my coat warm on the chair, my cup</p></div><div class="stanza"><p>filled before I thought to ask.</p><p>You work so hard, you never say</p><p>how heavy all the hours get,</p><p>you simply carry them away.</p></div><div class="stanza"><p>The first cold wind could try its worst.</p><p>Christmas is coming, and I know</p><p>it started here, in this plain month,</p><p>with you, the one who loves me so.</p></div></div><span class="num">1</span><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper" aria-label="Hands That Never Rest"><div class="face fr"><div class="inner"><h2>Hands That Never Rest</h2><p class="when">on the nights you come home tired</p><div class="stanza"><p>I watch you set your bag down slow,</p><p>the day still written in your eyes.</p><p>You give the world your whole strength,</p><p>then give me what is left, and it is wise,</p></div><div class="stanza"><p>and kind, and steady as a flame.</p><p>You mend my small and tangled days.</p><p>You never ask for thanks. So let</p><p>me say it here in all the ways</p></div><div class="stanza"><p>a poem can: I see you, love.</p><p>I see the work, the care, the grace.</p><p>If Christmas ever needed proof</p><p>of angels, I would show your face.</p></div></div><span class="num">2</span><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper" aria-label="One of a Kind"><div class="face fr"><div class="inner"><h2>One of a Kind</h2><p class="when">written while the first lights went up</p><div class="stanza"><p>They make the stars by the thousand,</p><p>the tinsel by the mile.</p><p>But no one made another you.</p><p>The mould was lost the while</p></div><div class="stanza"><p>you learned to laugh so loudly,</p><p>to love so quietly each day.</p><p>Of all the gifts beneath the tree,</p><p>you are the one that came to stay.</p></div><div class="stanza"><p>Let the shops keep every ribbon.</p><p>Let the sleigh go on its way.</p><p>I have the only treasure</p><p>that the season could display.</p></div></div><span class="num">3</span><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper" aria-label="December, Yours"><div class="face fr"><div class="inner"><h2>December, Yours</h2><p class="when">the long glowing weeks</p><div class="stanza"><p>Now the house is wreathed in light</p><p>and every evening smells of pine.</p><p>I count the days, and every one</p><p>is better if it holds your hand in mine.</p></div><div class="stanza"><p>You take care of everyone you love</p><p>so well they never see the cost.</p><p>This month, let someone care for you.</p><p>Let me be the arms where nothing is lost.</p></div><div class="stanza"><p>Rest your head. The snow can wait.</p><p>The world can wait. The bells can too.</p><p>For once, the one who gives and gives</p><p>will be the one who is held. That is you.</p></div></div><span class="num">4</span><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper" aria-label="When the Bells Come"><div class="face fr"><div class="inner"><h2>When the Bells Come</h2><p class="when">Christmas Eve, almost</p><div class="stanza"><p>The tree is tall. The house is hushed.</p><p>The stockings hang like sleeping birds.</p><p>I hold your hand beneath the lights</p><p>and cannot find the proper words,</p></div><div class="stanza"><p>so let me use the plainest ones:</p><p>thank you for the months we've had,</p><p>for every quiet kindness shown,</p><p>for every hard day made less sad.</p></div><div class="stanza"><p>When the bells come, let them find us</p><p>just like this, in lamplight, near,</p><p>a year of loving folded small</p><p>and tucked inside another year.</p></div><p class="sign">Merry Christmas, my love</p></div><span class="num">5</span><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper end" aria-label="Closing words"><div class="face fr"><div class="inner">
+      <p class="big">Christmas is almost here.</p>
+      <p class="s">And so are you, as you have been all year.</p>
+    </div><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page paper end theend" id="theend" aria-label="The End"><div class="face fr"><div class="inner">
+      <p class="orn" aria-hidden="true">&#10052; &nbsp; &#10084; &nbsp; &#10052;</p>
+      <p class="fin">The End</p>
+      <p class="s">Turn the page to close the book.</p>
+    </div><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+    <section class="page cover backcover" aria-label="Back cover"><div class="face fr"><div class="inner">
+      <p class="bigb gilt">Merry Christmas,<br>my love</p>
+      <p class="sub">The book is closed, but the love goes on.</p>
+      <button class="open" id="again">Open the book again</button>
+    </div><span class="sh"></span></div><div class="face bk"><span class="sh"></span></div></section>
+  </div>
+  <div class="controls">
+    <button class="nav" id="prev" aria-label="Previous page">&#8249;</button>
+    <span class="status" id="status" aria-live="polite"></span>
+    <button class="nav" id="next" aria-label="Next page">&#8250;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelector('.lights'),n=Math.max(8,Math.floor(window.innerWidth/48)),f=document.createDocumentFragment();
+  for(var i=0;i<n;i++)f.appendChild(document.createElement('span'));box.appendChild(f);
+})();
+
+(function(){
+  var book=document.getElementById('book'),pages=[].slice.call(document.querySelectorAll('.page')),cur=0,total=pages.length;
+  var prev=document.getElementById('prev'),next=document.getElementById('next'),status=document.getElementById('status');
+  pages.forEach(function(p,i){p.style.zIndex=total-i;p.addEventListener('animationend',function(e){if(e.target===p&&e.animationName==='turn'){p.classList.remove('turn-f','turn-b');p.style.removeProperty('--d')}})});
+  var tm=null;
+  function go(k){
+    k=Math.max(0,Math.min(total-1,k));var old=cur;cur=k;var ch=[];
+    pages.forEach(function(p,i){if((i<cur)!==p.classList.contains('flipped'))ch.push(i)});
+    if(cur<old)ch.reverse();
+    var anim=ch.slice(-2);
+    ch.forEach(function(i){var p=pages[i],fl=i<cur;
+      p.classList.remove('turn-f','turn-b');p.style.removeProperty('--d');
+      p.classList.toggle('flipped',fl);
+    });
+    if(anim.length){
+      book.classList.add('turning');
+      anim.forEach(function(i,r){var p=pages[i],fl=i<cur;
+        void p.offsetWidth;p.style.setProperty('--d',(r*0.14)+'s');p.classList.add(fl?'turn-f':'turn-b');
+      });
+      clearTimeout(tm);tm=setTimeout(function(){book.classList.remove('turning')},1250+anim.length*140+150);
+    }
+    pages.forEach(function(p,i){var on=i===cur;p.inert=!on;p.setAttribute('aria-hidden',on?'false':'true');
+      p.classList.toggle('far',i>cur+1);
+      if(on){var inn=p.querySelector('.inner');if(inn)inn.scrollTop=0}});
+    prev.disabled=cur===0;next.disabled=cur===total-1;
+    status.textContent=cur===0?'Cover':cur<=5?'Poem '+cur+' of 5':cur===total-3?'Closing words':cur===total-2?'The End':'Book closed';
+  }
+  prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+  document.getElementById('open').onclick=function(){go(1)};
+  document.getElementById('again').onclick=function(){go(0)};
+  document.getElementById('theend').onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);
+  });
+  var sx=null,sy=null;
+  book.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  book.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)go(dx<0?cur+1:cur-1);
+  },{passive:true});
+  go(0);
+})();
+
+(function(){
+  function pad(x){return x<10?'0'+x:''+x}
+  function tick(){
+    var now=new Date(),y=now.getFullYear(),t=new Date(y,11,25,0,0,0);
+    if(now>t)t=new Date(y+1,11,25,0,0,0);
+    var s=Math.floor(Math.max(0,t-now)/1000);
+    document.getElementById('d').textContent=Math.floor(s/86400);
+    document.getElementById('h').textContent=pad(Math.floor(s%86400/3600));
+    document.getElementById('m').textContent=pad(Math.floor(s%3600/60));
+    document.getElementById('s').textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+})();
+
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var c=document.getElementById('snow'),x=c.getContext('2d'),w,h,flakes=[];
+  function mk(r){return{x:Math.random()*w,y:r?Math.random()*h:-10,r:Math.random()*2.2+.8,v:Math.random()*.6+.3,p:Math.random()*6.28,a:Math.random()*.5+.35}}
+  function size(){
+    var r=window.devicePixelRatio||1;w=window.innerWidth;h=window.innerHeight;
+    c.width=w*r;c.height=h*r;x.setTransform(r,0,0,r,0,0);
+    var count=Math.round(Math.min(90,w/12));
+    while(flakes.length<count)flakes.push(mk(true));flakes.length=count;
+  }
+  function draw(){
+    x.clearRect(0,0,w,h);
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i];f.y+=f.v;f.p+=.01;f.x+=Math.sin(f.p)*.35;
+      if(f.y>h+10){flakes[i]=mk(false);continue}
+      x.beginPath();x.arc(f.x,f.y,f.r,0,6.28);x.fillStyle='rgba(255,247,235,'+f.a+')';x.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);size();draw();
+})();
+</script>
+</body>
+</html>
